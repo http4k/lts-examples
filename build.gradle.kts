@@ -29,7 +29,7 @@ repositories {
             username = ltsUser
             password = ltsPassword
         }
-        url = URI("https://maven.http4k.org/maven2")
+        url = URI("https://maven.http4k.org")
     }
 
     mavenCentral()
