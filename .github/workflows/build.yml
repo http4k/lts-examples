@@ -1,0 +1,20 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Setup Java
+        uses: actions/setup-java@v4.4.0
+        with:
+          distribution: temurin
+          java-version: 17
+      - name: Build
+        run: ./gradlew -PltsUser=${{ secrets.LTS_CUSTOMER_NAME }} -PltsPassword=${{ secrets.LTS_CUSTOMER_PASSWORD }} check
