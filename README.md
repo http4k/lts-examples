@@ -4,7 +4,7 @@ This repo contains instructions for customers of the http4k LTS programme.
 
 ## Accessing the LTS
 
-The LTS version of the http4k libraries are hosted in a private Maven repository, at [https://maven.http4k.org]. Access to these artifacts requires credentials that will be issued with your LTS subscription.
+The LTS version of the http4k libraries are hosted in a private Maven repository, at https://maven.http4k.org. Access to these artifacts requires credentials that will be issued with your LTS subscription.
 
 Configuring Gradle to use the private Maven repo can be done by using a custom repository: 
 
