@@ -1,2 +1,13 @@
 # http4k LTS examples
-Examples of how to configure the http4k LTS edition
+
+This repo contains instructions for customers of the http4k LTS programme.
+
+## Accessing the LTS
+
+The LTS version of the http4k libraries are hosted in a private Maven repository, at [https://maven.http4k.org]. Access to these artifacts requires credentials that will be issued with your LTS subscription.
+
+To set up access in your Gradle build, you will need to pass the credentials in some fashion. The easiest way to do this is to put them in your `gradle.properties` or to pass them on the command line. The properties are `ltsUser` and `ltsPassword`:
+
+```shell
+./gradlew -PltsUser=lts_username -PltsPassword=secret_password check
+```

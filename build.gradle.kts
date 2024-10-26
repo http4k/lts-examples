@@ -1,6 +1,7 @@
 import org.gradle.api.JavaVersion.VERSION_11
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11
 import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
+import java.net.URI
 
 plugins {
     kotlin("jvm") version "2.0.21"
@@ -19,7 +20,18 @@ kotlin {
     }
 }
 
+val ltsUser: String by project
+val ltsPassword: String by project
+
 repositories {
+    maven {
+        credentials {
+            username = ltsUser
+            password = ltsPassword
+        }
+        url = URI("https://maven.http4k.org/maven2")
+    }
+
     mavenCentral()
 }
 
@@ -43,7 +55,7 @@ tasks {
 }
 
 dependencies {
-    val http4kVersion = "5.32.4.0"
+    val http4kVersion: String by project
 
     implementation(platform("org.http4k:http4k-bom:$http4kVersion"))
     implementation("org.http4k:http4k-core")
