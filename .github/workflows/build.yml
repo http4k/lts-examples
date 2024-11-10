@@ -17,4 +17,4 @@ jobs:
           distribution: temurin
           java-version: 17
       - name: Build
-        run: ./gradlew -PltsUser=${{ secrets.LTS_CUSTOMER_NAME }} -PltsPassword=${{ secrets.LTS_CUSTOMER_PASSWORD }} check
+        run: ./gradlew -PltsMavenUser=${{ secrets.LTS_MAVEN_USER }} -PltsMavenPassword=${{ secrets.LTS_MAVEN_PASSWORD }} check

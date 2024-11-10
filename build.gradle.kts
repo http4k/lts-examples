@@ -20,14 +20,14 @@ kotlin {
     }
 }
 
-val ltsUser: String by project
-val ltsPassword: String by project
+val ltsMavenUser: String = project.findProperty("ltsMavenUser") as? String ?: System.getenv("LTS_MAVEN_USER")
+val ltsMavenPassword: String = project.findProperty("ltsMavenPassword") as? String ?: System.getenv("LTS_MAVEN_PASSWORD")
 
 repositories {
     maven {
         credentials {
-            username = ltsUser
-            password = ltsPassword
+            username = ltsMavenUser
+            password = ltsMavenPassword
         }
         url = URI("https://maven.http4k.org")
     }
