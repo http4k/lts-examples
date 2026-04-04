@@ -4,7 +4,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 import java.net.URI
 
 plugins {
-    kotlin("jvm") version "2.0.21"
+    alias(libs.plugins.kotlin.jvm)
 }
 
 buildscript {
@@ -55,12 +55,11 @@ tasks {
 }
 
 dependencies {
-    val http4kVersion: String by project
+    implementation(platform(libs.http4k.bom))
+    implementation(libs.http4k.core)
 
-    implementation(platform("org.http4k:http4k-bom:$http4kVersion"))
-    implementation("org.http4k:http4k-core")
-
-    testImplementation("org.http4k:http4k-testing-hamkrest")
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.11.1")
-    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.11.1")
+    testImplementation(libs.http4k.testing.hamkrest)
+    testImplementation(libs.junit.jupiter.api)
+    testImplementation(libs.junit.jupiter.engine)
+    testRuntimeOnly(libs.junit.platform.launcher)
 }
