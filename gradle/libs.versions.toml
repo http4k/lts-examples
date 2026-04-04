@@ -1,7 +1,10 @@
 [versions]
 http4k = "4.48.0.1"
 junit = "5.11.1"
-kotlin = "2.0.21"
+junit-platform = "1.11.1"
+kotlin = "2.3.20"
+version-catalog-update = "1.1.0"
+versions = "0.53.0"
 
 [libraries]
 http4k-bom = { module = "org.http4k:http4k-bom", version.ref = "http4k" }
@@ -9,7 +12,9 @@ http4k-core = { module = "org.http4k:http4k-core" }
 http4k-testing-hamkrest = { module = "org.http4k:http4k-testing-hamkrest" }
 junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit" }
 junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit" }
-junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher", version = "1.11.1" }
+junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher", version.ref = "junit-platform" }
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+versionCatalogUpdate = { id = "nl.littlerobots.version-catalog-update", version.ref = "version-catalog-update" }
+versions = { id = "com.github.ben-manes.versions", version.ref = "versions" }

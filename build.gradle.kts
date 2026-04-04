@@ -5,6 +5,8 @@ import java.net.URI
 
 plugins {
     alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.versionCatalogUpdate)
+    alias(libs.plugins.versions)
 }
 
 buildscript {
