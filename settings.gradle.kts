@@ -1,1 +1,1 @@
-rootProject.name = "http4k-lts-examples"
+rootProject.name = "http4k-ee-examples"

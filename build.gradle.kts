@@ -8,6 +8,7 @@ plugins {
     alias(libs.plugins.versionCatalogUpdate)
     alias(libs.plugins.versions)
     alias(libs.plugins.verify)
+    alias(libs.plugins.typeflows)
 }
 
 buildscript {
@@ -28,14 +29,14 @@ java {
     targetCompatibility = VERSION_21
 }
 
-val ltsMavenUser: String = project.findProperty("ltsMavenUser") as? String ?: System.getenv("LTS_MAVEN_USER")
-val ltsMavenPassword: String = project.findProperty("ltsMavenPassword") as? String ?: System.getenv("LTS_MAVEN_PASSWORD")
+val eeMavenUser: String = project.findProperty("eeMavenUser") as? String ?: System.getenv("LTS_MAVEN_USER")
+val eeMavenPassword: String = project.findProperty("eeMavenPassword") as? String ?: System.getenv("LTS_MAVEN_PASSWORD")
 
 repositories {
     maven {
         credentials {
-            username = ltsMavenUser
-            password = ltsMavenPassword
+            username = eeMavenUser
+            password = eeMavenPassword
         }
         url = URI("https://maven.http4k.org")
     }
@@ -63,4 +64,8 @@ dependencies {
     testImplementation(libs.junit.jupiter.api)
     testImplementation(libs.junit.jupiter.engine)
     testRuntimeOnly(libs.junit.platform.launcher)
+
+    typeflowsApi(libs.typeflows.github)
+    typeflowsApi(libs.typeflows.github.marketplace)
+    typeflowsApi(libs.http4k.standards)
 }

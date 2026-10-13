@@ -1,20 +1,19 @@
 name: Build
-
 on:
   push:
     branches:
-      - master
-
+    - master
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v6
-      - name: Setup Java
-        uses: actions/setup-java@v5.3.0
-        with:
-          distribution: temurin
-          java-version: 21
-      - name: Build
-        run: ./gradlew -PltsMavenUser=${{ secrets.LTS_MAVEN_USER }} -PltsMavenPassword=${{ secrets.LTS_MAVEN_PASSWORD }} check
+    - name: Checkout
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+    - name: Setup Java
+      uses: actions/setup-java@de7274f081f381c8f8158605e0321c36c376e2e6
+      with:
+        java-version: '21'
+        distribution: temurin
+    - name: Build
+      run: ./gradlew -PeeMavenUser=${{ secrets.LTS_MAVEN_USER }} -PeeMavenPassword=${{ secrets.LTS_MAVEN_PASSWORD }} check
+      shell: bash

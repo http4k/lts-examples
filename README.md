@@ -1,22 +1,22 @@
-# http4k LTS examples
+# http4k Enterprise Edition (EE) examples
 
-This repo contains instructions for customers of the http4k LTS programme.
+This repo contains instructions for customers of the http4k Enterprise Edition.
 
-## Accessing the LTS
+## Accessing the Enterprise Edition
 
-The LTS version of the http4k libraries are hosted in a private Maven repository, at https://maven.http4k.org. Access to these artifacts requires credentials that will be issued with your LTS subscription.
+The Enterprise Edition  versions of the http4k libraries are hosted in a private Maven repository, at https://maven.http4k.org. Access to these artifacts requires credentials that will be issued with your LTS subscription.
 
 Configuring Gradle to use the private Maven repo can be done by using a custom repository: 
 
 ```kotlin
-val ltsMavenUser: String by project
-val ltsMavenPassword: String by project
+val eeMavenUser: String by project
+val eeMavenPassword: String by project
 
 repositories {
     maven {
         credentials {
-            username = ltsMavenUser
-            password = ltsMavenPassword
+            username = eeMavenUser
+            password = eeMavenPassword
         }
         url = URI("https://maven.http4k.org")
     }
@@ -25,8 +25,8 @@ repositories {
 }
 ```
 
-To set up access in your Gradle build, you will need to pass the credentials in some fashion. The easiest way to do this is to put them in your `gradle.properties` or to pass them on the command line. The properties are `ltsMavenUser` and `ltsMavenPassword`:
+To set up access in your Gradle build, you will need to pass the credentials in some fashion. The easiest way to do this is to put them in your `gradle.properties` or to pass them on the command line. The properties are `eeMavenUser` and `eeMavenPassword`:
 
 ```shell
-./gradlew -PltsMavenUser=lts_username -PltsMavenPassword=secret_password check
+./gradlew -PeeMavenUser=lts_username -PeeMavenPassword=secret_password check
 ```
