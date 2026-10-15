@@ -36,6 +36,6 @@ private fun withEeMavenCredentials(workflow: Workflow) = Workflow("update-depend
     permissions = workflow.permissions
     on += workflow.on
     jobs += workflow.jobs
-    env += "LTS_MAVEN_USER" to $$"${{ secrets.LTS_MAVEN_USER }}"
-    env += "LTS_MAVEN_PASSWORD" to $$"${{ secrets.LTS_MAVEN_PASSWORD }}"
+    env += "HTTP4K_MAVEN_USER" to $$"${{ secrets.LTS_MAVEN_USER }}"
+    env += "HTTP4K_MAVEN_PASSWORD" to $$"${{ secrets.LTS_MAVEN_PASSWORD }}"
 }

@@ -1,3 +1,5 @@
+import nl.littlerobots.vcu.plugin.resolver.VersionSelectors
+import nl.littlerobots.vcu.plugin.versionSelector
 import org.gradle.api.JavaVersion.VERSION_21
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21
 import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
@@ -29,8 +31,8 @@ java {
     targetCompatibility = VERSION_21
 }
 
-val eeMavenUser: String = project.findProperty("eeMavenUser") as? String ?: System.getenv("LTS_MAVEN_USER")
-val eeMavenPassword: String = project.findProperty("eeMavenPassword") as? String ?: System.getenv("LTS_MAVEN_PASSWORD")
+val eeMavenUser: String = project.findProperty("eeMavenUser") as? String ?: System.getenv("HTTP4K_MAVEN_USER")
+val eeMavenPassword: String = project.findProperty("eeMavenPassword") as? String ?: System.getenv("HTTP4K_MAVEN_PASSWORD")
 
 repositories {
     maven {
@@ -42,6 +44,10 @@ repositories {
     }
 
     mavenCentral()
+}
+
+versionCatalogUpdate {
+    versionSelector { it.candidate.version.endsWith("-ee") || VersionSelectors.PREFER_STABLE.select(it) }
 }
 
 tasks {
